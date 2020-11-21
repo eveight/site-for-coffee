@@ -7,6 +7,10 @@ from django.shortcuts import render, redirect
 from coffee_shop.forms import OrderForms
 from .models import Category, Position, Order
 
+from rest_framework import generics
+from .serializers import PositionListSerializer
+from .serializers import OrderListSerializer
+
 
 @login_required(login_url='accounts/login')
 def coffee_shop_view(request):
@@ -95,3 +99,31 @@ def order_list_view(request):
         all_position = Position.objects.filter(id__in=obj.position_id)
         order_with_position[obj] = all_position
     return render(request, 'coffee_shop/order_list.html', {'qs': order_with_position})
+
+
+class PositionListView(generics.ListAPIView):
+    """ API list positions"""
+    queryset = Position.objects.all()
+    serializer_class = PositionListSerializer
+
+
+class OrderListView(generics.ListAPIView):
+    """ API list orders"""
+    queryset = Order.objects.all()
+    serializer_class = OrderListSerializer
+
+
+class PositionCreateView(generics.CreateAPIView):
+    """ API create position"""
+    serializer_class = PositionListSerializer
+
+
+class OrderCreateView(generics.CreateAPIView):
+    """ API create order"""
+    serializer_class = OrderListSerializer
+
+
+class PositionRetrieveUpdateDestroy(generics.RetrieveUpdateDestroyAPIView):
+    """ API retrieve update destroy position"""
+    queryset = Position.objects.all()
+    serializer_class = PositionListSerializer

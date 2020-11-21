@@ -1,5 +1,4 @@
 from django.urls import path
-
 from coffee_shop import views
 
 urlpatterns = [
@@ -12,4 +11,12 @@ urlpatterns = [
          name='delete_value_session_order_view'),
     path('create-order-view', views.create_order_view, name='create_order_view'),
     path('order-list-view', views.order_list_view, name='order_list_view'),
+
+    # RestAPI
+    path('api/positions', views.PositionListView.as_view()),
+    path('api/orders', views.OrderListView.as_view()),
+    path('api/create-position', views.PositionCreateView.as_view()),
+    path('api/create-order', views.OrderCreateView.as_view()),
+    path('api/rud-position/<int:pk>', views.PositionRetrieveUpdateDestroy.as_view()),
+
 ]
