@@ -18,5 +18,6 @@ urlpatterns = [
     path('api/create-position', views.PositionCreateView.as_view()),
     path('api/create-order', views.OrderCreateView.as_view()),
     path('api/rud-position/<int:pk>', views.PositionRetrieveUpdateDestroy.as_view()),
+    path('api/rud-order/<int:pk>', views.OrderRetrieveUpdateDestroy.as_view()),
 
 ]

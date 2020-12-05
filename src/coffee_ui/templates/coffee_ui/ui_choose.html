@@ -37,29 +37,35 @@
 
                 <thead>
                 <tr>
-                    <th scope="col">Время</th>
-                    <th scope="col">Продавец</th>
-                    <th scope="col">Содержимое заказа</th>
-                    <th scope="col">Цена</th>
+                    <th scope="col">Название</th>
                 </tr>
                 </thead>
                 <tbody>
-                {% for key, value in qs.items %}
                 <tr>
-
-                        <td>{{ key.time}}</td>
-                        <td>{{ key.seller }}</td>
-                        <td>
-                            {% for all_position in value %}
-                                {% for i in all_position %}
-                                    <small> {{ i.name }}</small> <br>
-                                {% endfor %}
-                            {% endfor %}
-                        </td>
-                        <td>{{ key.price }}</td>
-
+                        <td><a href="{% url 'read_rest_api' %}">Просмотреть все позиции</a></td>
                 </tr>
-                {%endfor%}
+                <tr>
+                        <td><a href="{% url 'read_rest_api_orders' %}">Просмотреть все заказы</a></td>
+                </tr>
+                <tr>
+                        <td><a href="{% url 'create_position' %}">Добавить позиции</a></td>
+                </tr>
+                <tr>
+                        <td><a href="{% url 'create_orders' %}">Добавить заказы</a></td>
+                </tr>
+                <tr>
+                        <td><a href="{% url 'delete_position_api' %}">Удалить позицию</a></td>
+                </tr>
+                <tr>
+                        <td><a href="{% url 'delete_order_api' %}">Удалить заказ</a></td>
+                </tr>
+                <tr>
+                        <td><a href="{% url 'put_position_api' %}">Изменить позицию</a></td>
+                </tr>
+                <tr>
+                        <td><a href="{% url 'put_order_api' %}">Изменить заказ</a></td>
+                </tr>
+
             </table>
 
         </div>

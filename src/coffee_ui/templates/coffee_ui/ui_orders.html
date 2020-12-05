@@ -44,20 +44,12 @@
                 </tr>
                 </thead>
                 <tbody>
-                {% for key, value in qs.items %}
+                {% for key in data %}
                 <tr>
-
                         <td>{{ key.time}}</td>
                         <td>{{ key.seller }}</td>
-                        <td>
-                            {% for all_position in value %}
-                                {% for i in all_position %}
-                                    <small> {{ i.name }}</small> <br>
-                                {% endfor %}
-                            {% endfor %}
-                        </td>
+                        <td>{{ key.position_id }}</td>
                         <td>{{ key.price }}</td>
-
                 </tr>
                 {%endfor%}
             </table>

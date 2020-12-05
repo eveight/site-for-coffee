@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'accounts',
     'coffee_shop',
     'rest_framework',
+    'coffee_ui',
 ]
 
 MIDDLEWARE = [

@@ -20,4 +20,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('accounts.urls')),
     path('', include('coffee_shop.urls')),
+    path('ui/', include('coffee_ui.urls')),
 ]

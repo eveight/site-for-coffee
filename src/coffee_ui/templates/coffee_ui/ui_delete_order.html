@@ -33,35 +33,10 @@
     </nav>
     <div class="col-xl">
         <div class="col text-center my-5">
-            <table class="table">
-
-                <thead>
-                <tr>
-                    <th scope="col">Время</th>
-                    <th scope="col">Продавец</th>
-                    <th scope="col">Содержимое заказа</th>
-                    <th scope="col">Цена</th>
-                </tr>
-                </thead>
-                <tbody>
-                {% for key, value in qs.items %}
-                <tr>
-
-                        <td>{{ key.time}}</td>
-                        <td>{{ key.seller }}</td>
-                        <td>
-                            {% for all_position in value %}
-                                {% for i in all_position %}
-                                    <small> {{ i.name }}</small> <br>
-                                {% endfor %}
-                            {% endfor %}
-                        </td>
-                        <td>{{ key.price }}</td>
-
-                </tr>
-                {%endfor%}
-            </table>
-
+            <form method="post" action="{% url 'delete_order_api' %}">{% csrf_token %}
+                {{form}}
+                <button class="btn btn-primary " type="submit">Удалить</button>
+            </form>
         </div>
     </div>
     <div class="row">

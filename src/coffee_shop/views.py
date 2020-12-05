@@ -96,7 +96,9 @@ def order_list_view(request):
 
     order_with_position = {}
     for obj in all_order_in_this_month:
-        all_position = Position.objects.filter(id__in=obj.position_id)
+        all_position = []
+        for position_id in obj.position_id:
+            all_position.append(Position.objects.filter(id=position_id))
         order_with_position[obj] = all_position
     return render(request, 'coffee_shop/order_list.html', {'qs': order_with_position})
 
@@ -127,3 +129,9 @@ class PositionRetrieveUpdateDestroy(generics.RetrieveUpdateDestroyAPIView):
     """ API retrieve update destroy position"""
     queryset = Position.objects.all()
     serializer_class = PositionListSerializer
+
+
+class OrderRetrieveUpdateDestroy(generics.RetrieveUpdateDestroyAPIView):
+    """ API retrieve update destroy order"""
+    queryset = Order.objects.all()
+    serializer_class = OrderListSerializer
